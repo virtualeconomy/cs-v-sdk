@@ -1,7 +1,7 @@
 ﻿namespace v.systems.transaction
 {
-	public class UnknownTransaction : Transaction
-	{
-	}
+    public class UnknownTransaction : Transaction
+    {
+    }
 
 }

@@ -3,17 +3,17 @@ using System;
 
 namespace v.systems.error
 {
-	public class ApiError : VException
-	{
+    public class ApiError : VException
+    {
         public ApiError(string message, int errorCode) : base(message)
-		{
-			this.Error = errorCode;
-		}
+        {
+            this.Error = errorCode;
+        }
 
-		public ApiError(string message) : base(message)
-		{
-			this.Error = 0;
-		}
+        public ApiError(string message) : base(message)
+        {
+            this.Error = 0;
+        }
 
         public ApiError() : base()
         {
@@ -23,7 +23,7 @@ namespace v.systems.error
         public int? Error { get; set; }
 
         public static ApiError FromJson(string json)
-		{
+        {
             ApiError result;
             try
             {
@@ -35,6 +35,6 @@ namespace v.systems.error
             }
             return result;
         }
-	}
+    }
 
 }

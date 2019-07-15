@@ -55,7 +55,7 @@ namespace v.systems
                     return result;
                 }
                 List<object> txList = list[0];
-                foreach(object txObj in txList)
+                foreach (object txObj in txList)
                 {
                     string txStr = JsonConvert.SerializeObject(txObj);
                     ITransaction tx = TransactionParser.Parse(txStr);

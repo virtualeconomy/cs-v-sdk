@@ -1,7 +1,7 @@
 ﻿namespace v.systems.entity
 {
-	public class BalanceDetail
-	{
+    public class BalanceDetail
+    {
         public string Address { get; set; }
 
 

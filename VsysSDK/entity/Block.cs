@@ -4,8 +4,8 @@ using v.systems.transaction;
 namespace v.systems.entity
 {
 
-	public class Block
-	{
+    public class Block
+    {
         public int? Version { get; set; }
 
 

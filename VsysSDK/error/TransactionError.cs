@@ -4,21 +4,21 @@ using System;
 namespace v.systems.error
 {
 
-	public class TransactionError : VException
+    public class TransactionError : VException
     {
         public TransactionError() : this("error", "Unknown transaction error")
         {
         }
 
         public TransactionError(string details) : this("error", details)
-		{
-		}
+        {
+        }
 
-		public TransactionError(string status, string details) : base(details)
-		{
-			this.Details = details;
-			this.Status = status;
-		}
+        public TransactionError(string status, string details) : base(details)
+        {
+            this.Details = details;
+            this.Status = status;
+        }
 
         public string Status { get; set; }
 

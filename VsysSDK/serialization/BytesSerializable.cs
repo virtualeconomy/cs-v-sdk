@@ -2,10 +2,10 @@
 
 namespace v.systems.serialization
 {
-	public interface BytesSerializable
-	{
-		byte[] ToBytes();
-		IList<byte> ToByteList();
-	}
+    public interface BytesSerializable
+    {
+        byte[] ToBytes();
+        IList<byte> ToByteList();
+    }
 
 }

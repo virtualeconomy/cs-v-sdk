@@ -4,8 +4,8 @@ using System.Security.Cryptography;
 
 namespace v.systems.utils
 {
-	public class Hash
-	{
+    public class Hash
+    {
         private static readonly SHA256Managed sha256 = new SHA256Managed();
         private static readonly IHash keccak256 = HashFactory.Crypto.SHA3.CreateKeccak256();
 

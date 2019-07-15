@@ -2,10 +2,10 @@
 
 namespace v.systems.transaction
 {
-	public class MintingTransaction : Transaction
-	{
-		protected internal string recipient;
-		protected internal long? amount;
+    public class MintingTransaction : Transaction
+    {
+        protected internal string recipient;
+        protected internal long? amount;
 
         public MintingTransaction()
         {
@@ -13,30 +13,30 @@ namespace v.systems.transaction
         }
 
         public virtual string Recipient
-		{
-			get
-			{
-				return recipient;
-			}
-			set
-			{
-				this.recipient = value;
-			}
-		}
+        {
+            get
+            {
+                return recipient;
+            }
+            set
+            {
+                this.recipient = value;
+            }
+        }
 
 
-		public virtual long? Amount
-		{
-			get
-			{
-				return amount;
-			}
-			set
-			{
-				this.amount = value;
-			}
-		}
+        public virtual long? Amount
+        {
+            get
+            {
+                return amount;
+            }
+            set
+            {
+                this.amount = value;
+            }
+        }
 
-	}
+    }
 
 }

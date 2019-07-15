@@ -1,23 +1,23 @@
 ﻿namespace v.systems.transaction
 {
-	public interface ITransaction
-	{
+    public interface ITransaction
+    {
 
-		string Id {get;set;}
-
-
-		byte Type {get;set;}
+        string Id { get; set; }
 
 
-		long Timestamp {get;set;}
+        byte Type { get; set; }
 
 
-		int? Height {get;set;}
+        long Timestamp { get; set; }
 
 
-		string Status {get;set;}
+        int? Height { get; set; }
 
 
-	}
+        string Status { get; set; }
+
+
+    }
 
 }

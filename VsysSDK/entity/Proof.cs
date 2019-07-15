@@ -1,7 +1,7 @@
 ﻿namespace v.systems.entity
 {
-	public class Proof
-	{
+    public class Proof
+    {
         public string ProofType { get; set; }
 
 
