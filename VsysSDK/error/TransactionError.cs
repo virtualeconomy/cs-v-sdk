@@ -6,6 +6,10 @@ namespace v.systems.error
 
 	public class TransactionError : VException
     {
+        public TransactionError() : this("error", "Unknown transaction error")
+        {
+        }
+
         public TransactionError(string details) : this("error", details)
 		{
 		}

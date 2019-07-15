@@ -15,6 +15,11 @@ namespace v.systems.error
 			this.Error = 0;
 		}
 
+        public ApiError() : base()
+        {
+            this.Error = 0;
+        }
+
         public int? Error { get; set; }
 
         public static ApiError FromJson(string json)

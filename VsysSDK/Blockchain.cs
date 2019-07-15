@@ -12,7 +12,7 @@ namespace v.systems
     public class Blockchain
     {
         public const long V_UNITY = 100000000L;
-        public const int TX_MAX_LIMIT = 10000;
+        public const int DEFAULT_TX_LIMIT = 100;
 
         public Blockchain(NetworkType network, string nodeUrl)
         {
@@ -27,22 +27,23 @@ namespace v.systems
             return balance.Balance;
         }
 
-        public virtual BalanceDetail GetBalanceDetail(string address)
+        public BalanceDetail GetBalanceDetail(string address)
         {
             string url = string.Format("{0}/addresses/balance/details/{1}", NodeUrl, address);
             return this.CallChainAPI<BalanceDetail>(url);
         }
 
-        public virtual IList<ITransaction> GetTransactionHistory(string address, int num)
+        public IList<ITransaction> GetTransactionHistory(string address)
+        {
+            return GetTransactionHistory(address, DEFAULT_TX_LIMIT);
+        }
+
+        public IList<ITransaction> GetTransactionHistory(string address, int num)
         {
             IList<ITransaction> result = new List<ITransaction>();
             if (num <= 0)
             {
                 return result;
-            }
-            if (num > TX_MAX_LIMIT)
-            {
-                num = TX_MAX_LIMIT;
             }
             string url = string.Format("{0}/transactions/address/{1}/limit/{2}", NodeUrl, address, num);
             string json = HttpHelper.Get(url);
@@ -68,7 +69,7 @@ namespace v.systems
             return result;
         }
 
-        public virtual ITransaction GetTransactionById(string txId)
+        public ITransaction GetTransactionById(string txId)
         {
             string url = string.Format("{0}/transactions/info/{1}", NodeUrl, txId);
             string json = HttpHelper.Get(url);
@@ -89,7 +90,7 @@ namespace v.systems
             return tx;
         }
 
-        public virtual ITransaction GetUnconfirmedTransactionById(string txId)
+        public ITransaction GetUnconfirmedTransactionById(string txId)
         {
             string url = string.Format("{0}/transactions/unconfirmed/info/{1}", NodeUrl, txId);
             string json = HttpHelper.Get(url);
@@ -103,7 +104,7 @@ namespace v.systems
             }
         }
 
-        public virtual ProvenTransaction SendTransaction(TransactionType txType, string json)
+        public ProvenTransaction SendTransaction(TransactionType txType, string json)
         {
             string url;
             switch (txType)
@@ -114,7 +115,7 @@ namespace v.systems
                 case TransactionType.Lease:
                     url = string.Format("{0}/leasing/broadcast/lease", NodeUrl);
                     return this.CallChainAPI<LeaseTransaction>(url, json);
-                case TransactionType.CancelLease:
+                case TransactionType.LeaseCancel:
                     url = string.Format("{0}/leasing/broadcast/cancel", NodeUrl);
                     return this.CallChainAPI<LeaseCancelTransaction>(url, json);
                 default:
@@ -122,7 +123,7 @@ namespace v.systems
             }
         }
 
-        public virtual int GetHeight()
+        public int GetHeight()
         {
             string url = string.Format("{0}/blocks/height", NodeUrl);
             string json = HttpHelper.Get(url);

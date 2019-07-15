@@ -15,5 +15,6 @@ namespace v.systems.Tests
         public const NetworkType NETWORK = NetworkType.Testnet;
         public const string NODE_ADDRESS = "http://test.v.systems:9922";
         public const int WAIT_BLOCK_TIMEOUT = 15;
+        public const bool ACCEPT_UNKNOWN_TX = false;
     }
 }
