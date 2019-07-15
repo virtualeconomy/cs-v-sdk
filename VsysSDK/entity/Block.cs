@@ -33,7 +33,7 @@ namespace v.systems.entity
         public long? Fee { get; set; }
 
 
-        public long? Blocksize { get; set; }
+        public int? Blocksize { get; set; }
 
 
         public int? Height { get; set; }

@@ -4,7 +4,7 @@
     {
         Payment = 2,
         Lease = 3,
-        CancelLease = 4,
+        LeaseCancel = 4,
         Minting =5
     }
 }

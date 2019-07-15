@@ -17,7 +17,7 @@
         public long? Effective { get; set; }
 
 
-        public long? Height { get; set; }
+        public int? Height { get; set; }
 
     }
 

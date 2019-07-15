@@ -12,7 +12,7 @@ namespace v.systems.transaction
 
 		public LeaseCancelTransaction()
 		{
-			type = (byte)TransactionType.CancelLease;
+			type = (byte)TransactionType.LeaseCancel;
 		}
 
 		public override JObject ToAPIRequestJson(string publicKey, string signature)

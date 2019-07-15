@@ -17,7 +17,7 @@ namespace v.systems.transaction
 				case TransactionType.Lease:
 					tx = JsonConvert.DeserializeObject<LeaseTransaction>(json);
                     break;
-				case TransactionType.CancelLease:
+				case TransactionType.LeaseCancel:
 					tx = JsonConvert.DeserializeObject<LeaseCancelTransaction>(json);
                     break;
 				case TransactionType.Minting:

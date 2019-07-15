@@ -42,7 +42,6 @@ namespace v.systems
             publicKey = new byte[32];
             Curve_sigs.curve25519_keygen(publicKey, privateKey);
             address = PublicKeyToAddress(publicKey, network);
-            string hexPK = BytesHelper.ToHex(privateKey);
         }
 
         public Account(NetworkType network, string base58PrivateKey)
