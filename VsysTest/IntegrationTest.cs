@@ -9,9 +9,11 @@ namespace v.systems.Tests
     [TestClass()]
     public class IntegrationTest
     {
+        private const long MIN_TEST_BALANCE = 3 * Blockchain.V_UNITY;
         private Blockchain chain;
         private Account account;
         private string recipient;
+        private string leaseId;
 
         [TestInitialize]
         public void Init()
@@ -21,9 +23,19 @@ namespace v.systems.Tests
             recipient = TestConfig.RECIPIENT;
         }
 
+        [TestCleanup]
+        public void Cleanup()
+        {
+            if (leaseId != null)
+            {
+                CancelLease(leaseId);
+            }
+        }
+
         [TestMethod()]
         public void TestPayment()
         {
+            CheckBalance();
             long amount = 1 * Blockchain.V_UNITY;
             PaymentTransaction tx = TransactionFactory.BuildPaymentTx(recipient, amount);
             ProvenTransaction result = account.SendTransaction(chain, tx);
@@ -31,20 +43,23 @@ namespace v.systems.Tests
             Assert.IsTrue(WaitPackageOnChain(result.Id));
         }
 
+        private void CheckBalance()
+        {
+            long? balance = account.GetBalance(chain);
+            Assert.IsTrue(balance.HasValue);
+            Assert.IsTrue(balance.Value > MIN_TEST_BALANCE, "No enough balance for runing the whole test cases. You can get test coins by faucet in https://testexplorer.v.systems/");
+        }
+
         [TestMethod()]
         public void TestLease()
         {
+            CheckBalance();
             long amount = 1 * Blockchain.V_UNITY;
             LeaseTransaction tx = TransactionFactory.BuildLeaseTx(recipient, amount);
             ProvenTransaction result = account.SendTransaction(chain, tx);
             Assert.IsNotNull(result.Id);
             Assert.IsTrue(WaitPackageOnChain(result.Id));
-        }
-
-        [TestMethod()]
-        public void CancelLease()
-        {
-            CancelLease("<Please input lease id>");
+            leaseId = result.Id;
         }
 
         public void CancelLease(string txId)

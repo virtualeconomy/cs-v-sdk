@@ -32,8 +32,11 @@ namespace v.systems.utils
          * @param input the bytes to encode
          * @return the base58-encoded string
          */
-        public static string Encode(byte[] input)
+        public static string Encode(byte[] inputBytes)
         {
+            byte[] input = new byte[inputBytes.Length];
+            Array.Copy(inputBytes, input, inputBytes.Length);
+
             if (input.Length == 0)
             {
                 return "";
