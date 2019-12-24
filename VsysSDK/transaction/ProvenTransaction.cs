@@ -15,14 +15,12 @@ namespace v.systems.transaction
 
         public virtual JObject ToAPIRequestJson(string publicKey, string signature)
         {
-            JObject json = new JObject
-            {
-                ["timestamp"] = this.timestamp,
-                ["fee"] = this.fee,
-                ["feeScale"] = this.feeScale,
-                ["senderPublicKey"] = publicKey,
-                ["signature"] = signature
-            };
+            JObject json = new JObject();
+            json["timestamp"] = this.timestamp;
+            json["fee"] = this.fee;
+            json["feeScale"] = this.feeScale;
+            json["senderPublicKey"] = publicKey;
+            json["signature"] = signature;
             return json;
         }
 
@@ -33,17 +31,15 @@ namespace v.systems.transaction
 
         public virtual JObject ToColdSignJson(string publicKey, int ApiVersion)
         {
-            JObject json = new JObject
-            {
-                ["protocol"] = "v.systems",
-                ["api"] = ApiVersion,
-                ["opc"] = "transaction",
-                ["transactionType"] = this.type,
-                ["senderPublicKey"] = publicKey,
-                ["fee"] = this.fee,
-                ["feeScale"] = this.feeScale,
-                ["timestamp"] = this.timestamp
-            };
+            JObject json = new JObject();
+            json["protocol"] = "v.systems";
+            json["api"] = ApiVersion;
+            json["opc"] = "transaction";
+            json["transactionType"] = this.type;
+            json["senderPublicKey"] = publicKey;
+            json["fee"] = this.fee;
+            json["feeScale"] = this.feeScale;
+            json["timestamp"] = this.timestamp;
             return json;
         }
 

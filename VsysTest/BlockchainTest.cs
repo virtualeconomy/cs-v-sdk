@@ -42,34 +42,39 @@ namespace v.systems.Tests
                 Assert.IsNotNull(tx.Id, "Failed to get Tx Id");
                 Assert.IsNotNull(tx.Height, "Failed to get Tx Height (Id: " + tx.Id + ")");
                 Assert.IsNotNull(tx.Status, "Failed to get Tx Status (Id: " + tx.Id + ")");
-                if (tx is ProvenTransaction pvtx)
+                if (tx is ProvenTransaction)
                 {
+                    ProvenTransaction pvtx = tx as ProvenTransaction;
                     Assert.IsNotNull(pvtx.Proofs, "Failed to get Tx Proofs (Id: " + tx.Id + ")");
                     Assert.IsTrue(pvtx.Proofs.Count > 0, "Tx Proofs should more than one (Id: " + tx.Id + ")");
                     Assert.IsNotNull(pvtx.Proofs[0].PublicKey, "Failed to get Tx PublicKey (Id: " + tx.Id + ")");
                     Assert.IsNotNull(pvtx.Proofs[0].Signature, "Failed to get Tx Signature (Id: " + tx.Id + ")");
                 }
-                if (tx is PaymentTransaction ptx)
+                if (tx is PaymentTransaction)
                 {
+                    PaymentTransaction ptx = tx as PaymentTransaction;
                     Assert.IsNotNull(ptx.Recipient, "Failed to get Recipient for Payment Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(ptx.Amount, "Failed to get Amount for Payment Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(ptx.Attachment, "Failed to get Attachment for Payment Tx (Id: " + tx.Id + ")");
                 }
-                if (tx is LeaseTransaction ltx)
+                if (tx is LeaseTransaction)
                 {
+                    LeaseTransaction ltx = tx as LeaseTransaction;
                     Assert.IsNotNull(ltx.Recipient, "Failed to get Recipient for Lease Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(ltx.Amount, "Failed to get Amount for Lease Tx (Id: " + tx.Id + ")");
                 }
-                if (tx is LeaseCancelTransaction lctx)
+                if (tx is LeaseCancelTransaction)
                 {
+                    LeaseCancelTransaction lctx = tx as LeaseCancelTransaction;
                     Assert.IsNotNull(lctx.LeaseId, "Failed to get LeaseId for LeaseCancel Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(lctx.Lease, "Failed to get Lease Info for LeaseCancel Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(lctx.Lease.Id, "Failed to get Id of Lease Info for LeaseCancel Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(lctx.Lease.Recipient, "Failed to get Recipient of Lease Info for LeaseCancel Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(lctx.Lease.Amount, "Failed to get Amount of Lease Info for LeaseCancel Tx (Id: " + tx.Id + ")");
                 }
-                if (tx is MintingTransaction mtx)
+                if (tx is MintingTransaction)
                 {
+                    MintingTransaction mtx = tx as MintingTransaction;
                     Assert.IsNotNull(mtx.Recipient, "Failed to get Recipient for Minting Tx (Id: " + tx.Id + ")");
                     Assert.IsNotNull(mtx.Amount, "Failed to get Amount for Minting Tx (Id: " + tx.Id + ")");
                 }

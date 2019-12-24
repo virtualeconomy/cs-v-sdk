@@ -21,7 +21,14 @@ namespace v.systems.entity
         public string TransactionMerkleRoot { get; set; }
 
 
-        public IList<ITransaction> Transactions { get; set; } = new List<ITransaction>();
+        private IList<ITransaction> transactions = new List<ITransaction>();
+
+
+        public IList<ITransaction> Transactions 
+        {
+            get { return transactions; }
+            set { transactions = value; }
+        }
 
 
         public string Generator { get; set; }
