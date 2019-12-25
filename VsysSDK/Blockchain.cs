@@ -13,11 +13,13 @@ namespace v.systems
     {
         public const long V_UNITY = 100000000L;
         public const int DEFAULT_TX_LIMIT = 100;
+        private readonly NetworkType network;
+        private readonly string nodeUrl;
 
         public Blockchain(NetworkType network, string nodeUrl)
         {
-            this.Network = network;
-            this.NodeUrl = nodeUrl;
+            this.network = network;
+            this.nodeUrl = nodeUrl;
         }
 
         public long? GetBalance(string address)
@@ -180,8 +182,8 @@ namespace v.systems
             }
         }
 
-        public NetworkType Network { get; }
+        public NetworkType Network { get { return this.network; } }
 
-        public string NodeUrl { get; }
+        public string NodeUrl { get { return this.nodeUrl; } }
     }
 }
