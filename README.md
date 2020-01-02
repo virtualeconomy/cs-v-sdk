@@ -13,9 +13,9 @@ C# library for V Systems
 	 
   3. The external libraries using are under `libs` folder. Here is source code info:
 
-    * `Blake2Sharp.dll` is from https://github.com/BLAKE2/BLAKE2/tree/master/csharp
+     * `Blake2Sharp.dll` is from https://github.com/BLAKE2/BLAKE2/tree/master/csharp
 	 
-    * `HashLib.dll` is from https://github.com/stratisproject/HashLib
+     * `HashLib.dll` is from https://github.com/stratisproject/HashLib
 
 ## Usage
 
