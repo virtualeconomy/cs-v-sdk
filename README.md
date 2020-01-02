@@ -10,6 +10,12 @@ C# library for V Systems
      ```bash
      $ git clone https://github.com/virtualeconomy/cs-v-sdk.git
      ```
+	 
+  3. The external libraries using are under `libs` folder. Here is source code info:
+
+    * `Blake2Sharp.dll` is from https://github.com/BLAKE2/BLAKE2/tree/master/csharp
+	 
+    * `HashLib.dll` is from https://github.com/stratisproject/HashLib
 
 ## Usage
 
